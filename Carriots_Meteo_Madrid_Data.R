@@ -62,12 +62,18 @@ df$time <- as.POSIXct(df$created_at, origin="1970-01-01", tz="Europe/Madrid")
 
 ################################################################################
 # Some plots
-hist(as.numeric(df$temperature), col="lightgreen")
-hist(as.numeric(df$humidity), col="lightgreen")
-hist(as.numeric(df$battery), col="lightgreen")
-hist(as.numeric(df$pressure), col="lightgreen")
-hist(as.numeric(df$uv_rad), col="lightgreen")
-hist(as.numeric(df$rainfall), col="lightgreen")
+hist(as.numeric(df$temperature), col="lightgreen", main="Temperature", 
+     xlab="time", ylab="frecuency")
+hist(as.numeric(df$humidity), col="lightgreen", main="Humidity", 
+     xlab="time", ylab="frecuency")
+hist(as.numeric(df$battery), col="lightgreen", main="Battery", 
+     xlab="time", ylab="frecuency")
+hist(as.numeric(df$pressure), col="lightgreen", main="Pressure", 
+     xlab="time", ylab="frecuency")
+hist(as.numeric(df$uv_rad), col="lightgreen", main="UV Radiation", 
+     xlab="time", ylab="frecuency")
+hist(as.numeric(df$rainfall), col="lightgreen", main="Rainfall", 
+     xlab="time", ylab="frecuency")
 
 p <- ggplot(df, aes(time, as.numeric(temperature)))
 p + geom_bar(stat="identity", fill="lightgreen", colour="darkgreen") +
@@ -91,6 +97,8 @@ plot(df$time, as.numeric(df$humidity), type="l", col="blue", xlab="date",
 plot(df$time, as.numeric(df$pressure), type="l", col="red", xlab="date", 
      ylab="pressure")
 par(mfrow = c(1, 1))
+
+qplot(time, temperature, data=df, size=humidity, colour=pressure)
 
 # Save data frame
 save(df, file="df.RData")
