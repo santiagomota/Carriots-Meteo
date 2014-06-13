@@ -125,10 +125,15 @@ p +   geom_boxplot(aes(fill=factor(as.Date(time)))) +
 
 p <-  ggplot(df, aes(factor(as.Date(time)), as.numeric(humidity))) 
 p +   geom_boxplot(aes(fill=factor(as.Date(time)))) + 
-      ylab("humidity (C)") + 
+      ylab("Humidity (C)") + 
       xlab("Time") + 
-      ggtitle("humidity by day")
+      ggtitle("Humidity by day")
 
+p <-  ggplot(df, aes(factor(as.Date(time)), as.numeric(pressure))) 
+p +   geom_boxplot(aes(fill=factor(as.Date(time)))) + 
+      ylab("Pressure (hPa)") + 
+      xlab("Time") + 
+      ggtitle("Pressure by day")
 
 # Save data frame
 save(df, file="df.RData")
