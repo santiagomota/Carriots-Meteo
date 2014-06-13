@@ -3,4 +3,4 @@ Carriots-Meteo
 
 Carriots Meteo with R
 
-Example of an access to Carrios Meteo using R
+Example of an access to Carriots Meteo using R
