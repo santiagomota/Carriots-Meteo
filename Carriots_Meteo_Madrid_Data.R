@@ -99,15 +99,23 @@ plot(df$time, as.numeric(df$pressure), type="l", col="red", xlab="date",
 par(mfrow = c(1, 1))
 
 qplot(time, as.numeric(temperature), data=df, size=as.numeric(humidity), 
-      colour=as.numeric(pressure))
+      colour=as.numeric(pressure), xlab="time", ylab="Temperature (C)", 
+      main="Temperature in Madrid station")
 
 p <- ggplot(df, aes(time, as.numeric(temperature)))
-p +  geom_point()
-p +  geom_point(aes(colour=as.numeric(pressure)))
+p +  geom_point() +
+     geom_point(aes(colour=as.numeric(pressure))) +
+     xlab("time") + 
+     ylab("Temperature (C)") + 
+     ggtitle("Temperature in Madrid station")
+
 
 p <- ggplot(df, aes(time, as.numeric(temperature)))
-p +  geom_point()
-p +  geom_point(aes(colour=as.numeric(humidity))) + scale_colour_gradient(low="blue") 
+p +  geom_point() +
+     geom_point(aes(colour=as.numeric(humidity))) + scale_colour_gradient(low="blue") +
+     xlab("time") + 
+     ylab("Temperature (C)") + 
+     ggtitle("Temperature in Madrid station")
 
 
 # Save data frame
