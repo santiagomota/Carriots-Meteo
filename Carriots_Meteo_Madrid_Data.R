@@ -76,14 +76,14 @@ hist(as.numeric(df$rainfall), col="lightgreen", main="Rainfall",
      xlab="time", ylab="frecuency")
 
 p <- ggplot(df, aes(time, as.numeric(temperature)))
-p + geom_bar(stat="identity", fill="lightgreen", colour="darkgreen") +
-    xlab("date") + ylab("temperature (C)") +
-    ggtitle("Temperature in Madrid")
+p +  geom_bar(stat="identity", fill="lightgreen", colour="darkgreen") +
+     xlab("date") + ylab("temperature (C)") +
+     ggtitle("Temperature in Madrid")
 
 p <- ggplot(df, aes(x=time, y=as.numeric(temperature)))
-p + geom_line(colour="darkgreen") +
-    xlab("date") + ylab("temperature (C)") +
-    ggtitle("Temperature in Madrid")
+p +  geom_line(colour="darkgreen") +
+     xlab("date") + ylab("temperature (C)") +
+     ggtitle("Temperature in Madrid")
 
 qplot(time, as.numeric(temperature), data=df, geom="line")
 qplot(time, as.numeric(humidity), data=df, geom="line")
@@ -98,7 +98,17 @@ plot(df$time, as.numeric(df$pressure), type="l", col="red", xlab="date",
      ylab="pressure")
 par(mfrow = c(1, 1))
 
-qplot(time, temperature, data=df, size=humidity, colour=pressure)
+qplot(time, as.numeric(temperature), data=df, size=as.numeric(humidity), 
+      colour=as.numeric(pressure))
+
+p <- ggplot(df, aes(time, as.numeric(temperature)))
+p +  geom_point()
+p +  geom_point(aes(colour=as.numeric(pressure)))
+
+p <- ggplot(df, aes(time, as.numeric(temperature)))
+p +  geom_point()
+p +  geom_point(aes(colour=as.numeric(humidity))) + scale_colour_gradient(low="blue") 
+
 
 # Save data frame
 save(df, file="df.RData")
