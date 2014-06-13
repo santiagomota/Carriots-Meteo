@@ -117,6 +117,18 @@ p +  geom_point() +
      ylab("Temperature (C)") + 
      ggtitle("Temperature in Madrid station")
 
+p <-  ggplot(df, aes(factor(as.Date(time)), as.numeric(temperature))) 
+p +   geom_boxplot(aes(fill=factor(as.Date(time)))) + 
+      ylab("Temperature (C)") + 
+      xlab("Time") + 
+      ggtitle("Temperature by day")
+
+p <-  ggplot(df, aes(factor(as.Date(time)), as.numeric(humidity))) 
+p +   geom_boxplot(aes(fill=factor(as.Date(time)))) + 
+      ylab("humidity (C)") + 
+      xlab("Time") + 
+      ggtitle("humidity by day")
+
 
 # Save data frame
 save(df, file="df.RData")
