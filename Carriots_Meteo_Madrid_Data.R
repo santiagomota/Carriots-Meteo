@@ -131,9 +131,15 @@ p +   geom_boxplot(aes(fill=factor(as.Date(time)))) +
 
 p <-  ggplot(df, aes(factor(as.Date(time)), as.numeric(pressure))) 
 p +   geom_boxplot(aes(fill=factor(as.Date(time)))) + 
-      ylab("Pressure (hPa)") + 
+      ylab("Pressure (mbar)") + 
       xlab("Time") + 
       ggtitle("Pressure by day")
+
+p <-  ggplot(df, aes(factor(as.Date(time)), as.numeric(wind_speed))) 
+p +   geom_boxplot(aes(fill=factor(as.Date(time)))) + 
+      ylab("Wind Speed (km/h)") + 
+      xlab("Time") + 
+      ggtitle("Wind Speed by day")
 
 # Save data frame
 save(df, file="df.RData")
